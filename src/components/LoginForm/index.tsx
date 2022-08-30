@@ -5,10 +5,19 @@ import { Div } from './style'
 import GlobalStyle from '../../pages/global'
 
 export default function Input() {
-  function searchUser() {
+  function getValues() {
     const email: HTMLInputElement = document.querySelector('#email')
-
     const password: HTMLInputElement = document.querySelector('#password')
+
+    authLogin(email.value, password.value)
+  }
+
+  function authLogin(email: string, password: string) {
+    if (email === 'root' && password === 'root') {
+      window.location.href = 'Home'
+    } else {
+      alert('Usuário ou senha inválidos')
+    }
   }
 
   useEffect(() => {
@@ -18,7 +27,7 @@ export default function Input() {
       }
 
       if (event.code == 'Enter') {
-        searchUser()
+        getValues()
       }
     })
   }, [])
@@ -30,7 +39,7 @@ export default function Input() {
         <div className="shape"></div>
         <div className="shape"></div>
       </div>
-      <form>
+      <div className='form'>
         <h3>Login</h3>
         <label htmlFor="Email">Email</label>
         <input type="text" placeholder="Email" id="email" autoComplete="off" />
@@ -41,8 +50,8 @@ export default function Input() {
           id="password"
           autoComplete="off"
         />
-        <button onClick={searchUser}>Entrar</button>
-      </form>
+        <button onClick={getValues}>Entrar</button>
+      </div>
     </Div>
   )
 }
