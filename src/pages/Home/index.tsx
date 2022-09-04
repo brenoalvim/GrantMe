@@ -4,7 +4,7 @@ import Link from '../../components/Head/Link'
 
 import Title from '../../components/Head/Title'
 
-import GlobalStyle from '../global'
+import GlobalStyle from './global'
 
 export default function Home() {
   return (
